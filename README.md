@@ -1,5 +1,4 @@
 # Mundane Reclamation
-type `python -B file.py` to avoid pycache files 
 
 
 ### FIXME
