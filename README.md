@@ -1,8 +1,8 @@
 # Mundane Reclamation
 
 
-# FIXME
+### FIXME
 - curses windows crashes when player reaches lower-right corner 
 
 
-# TODO
+### TODO
