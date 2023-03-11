@@ -22,11 +22,17 @@ reclamation = """ ██▀███  ▓█████  ▄████▄   �
    ░        ░  ░░ ░          ░  ░     ░  ░       ░         ░  ░         ░      ░ ░           ░ 
                 ░     """
               
+   
+def print_title():    
+    try:
+        system('clear')
+    except:
+        system('cls') 
+    
+    print('\n')            
+    print(mundane)
+    print(reclamation)
+    print('\n')
+    
 
-try:
-    system('clear')
-except:
-    system('cls')
-                         
-print(mundane)
-print(reclamation)
+print_title()
