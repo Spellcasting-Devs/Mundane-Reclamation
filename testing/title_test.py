@@ -1,4 +1,5 @@
-from os import system
+import os
+WIPE = os.system("clear") if os.name == "posix" else os.system("cls")
 
 mundane = """ ███▄ ▄███▓ █    ██  ███▄    █ ▓█████▄  ▄▄▄       ███▄    █ ▓█████ 
 ▓██▒▀█▀ ██▒ ██  ▓██▒ ██ ▀█   █ ▒██▀ ██▌▒████▄     ██ ▀█   █ ▓█   ▀ 
@@ -24,15 +25,10 @@ reclamation = """ ██▀███  ▓█████  ▄████▄   �
               
    
 def print_title():    
-    try:
-        system('clear')
-    except:
-        system('cls') 
-    
+    WIPE
+
     print('\n')            
     print(mundane)
     print(reclamation)
     print('\n')
     
-
-print_title()
