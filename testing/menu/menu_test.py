@@ -1,7 +1,7 @@
 import curses
 from title_test import print_title
 
-menu = ['Play', 'Settings', 'Exit']
+menu = ['New Game', 'Load Game', 'Settings', 'Exit']
 
 
 
@@ -64,5 +64,11 @@ def main(stdscr):
 
         print_menu(stdscr, current_row)
 
-home()
-curses.wrapper(main)
+
+
+def load_menu():
+    home()
+    curses.wrapper(main)
+    
+    
+load_menu()

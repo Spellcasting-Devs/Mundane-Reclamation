@@ -1,6 +1,7 @@
 from configparser import ConfigParser
 from os.path import (dirname, abspath)
 
+# maybe move this file somewhere else
 
 FILEPATH = f"{dirname(abspath(__file__))}/../players"
 
