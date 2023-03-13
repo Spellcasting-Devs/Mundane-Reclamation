@@ -24,5 +24,8 @@ def config_read(name, section, key):
     return cfg.get(section, key)
 
 
+# this is how you would read values from existing files, you submit a name, section and key
 player_name = config_read('tester', 'CONSTANTS', 'player_name')
 print(player_name)
+
+# config_write(name, section, key, value) is how you would write stuff to existing files, changing variables on the way
