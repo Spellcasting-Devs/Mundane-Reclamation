@@ -12,7 +12,7 @@ def create_player():
     if os.name == 'posix':
         os.system(f"cd {PATH_PLAYERS} && touch {name}.ini")
     else:
-        pass # create file on windows system
+        os.system(f"cd {PATH_PLAYERS} && type NUL > {name}.ini")
     
     cfg = ConfigParser()
     
