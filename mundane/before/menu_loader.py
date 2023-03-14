@@ -1,10 +1,6 @@
 import curses
 import os
 
-from cfg_create_player import create_player
-
-
-WIPE = os.system("clear") if os.name == "posix" else os.system("cls")
 MENU = ['New Game', 'Load Game', 'Exit']
 
 
@@ -32,19 +28,20 @@ reclamation = """ ██▀███  ▓█████  ▄████▄   �
               
 
 
+def clear_screen(): # changed to this function because wipe did not work properly
+    os.system("clear") if os.name == "posix" else os.system("cls")
+
 def load_menu():
     load_title_screen()
     return_code = curses.wrapper(main)
-    WIPE
     
-    if return_code == 0:
-        create_player()
-    else:
-        pass
+    clear_screen()
+    
+    return return_code # the return code defines the operation which has to be performed -> 0: create new player, 1: load player data
 
 
 def load_title_screen():
-    WIPE
+    clear_screen()
     print(f"\n{mundane}\n{reclamation}\n")
     print("PRESS ENTER TO START...\n")
     input()
@@ -75,16 +72,10 @@ def print_center(stdscr, text):
 
 
 def main(stdscr):
-    # turn off cursor blinking
     curses.curs_set(0)
-
-    # color scheme for selected row
     curses.init_pair(1, curses.COLOR_BLACK, curses.COLOR_WHITE)
-
-    # specify the current selected row
     current_row = 0
 
-    # print the MENU
     print_menu(stdscr, current_row)
 
     while 1:
@@ -103,5 +94,3 @@ def main(stdscr):
                 break 
             
         print_menu(stdscr, current_row)
-        
-load_menu()

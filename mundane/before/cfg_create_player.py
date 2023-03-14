@@ -7,8 +7,12 @@ PATH_PLAYERS = f"{dirname(abspath(__file__))}/../config/players/"
 
 
 def create_player():
-    name = str(input("enter your player name:"))
-    os.system(f"cd {PATH_PLAYERS} && touch {name}.ini")
+    name = str(input("Enter your player name: "))
+    
+    if os.name == 'posix':
+        os.system(f"cd {PATH_PLAYERS} && touch {name}.ini")
+    else:
+        pass # create file on windows system
     
     cfg = ConfigParser()
     
