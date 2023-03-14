@@ -90,7 +90,7 @@ def main(stdscr):
                 return 0
             elif current_row == 1:
                 return 1
-            elif current_row == len(MENU)-1:
-                break 
+            else:
+                break
             
         print_menu(stdscr, current_row)
