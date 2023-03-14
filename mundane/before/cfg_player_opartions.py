@@ -1,4 +1,5 @@
 import os
+import sys
 from configparser import ConfigParser
 from os.path import (dirname, abspath)
 
@@ -29,3 +30,24 @@ def create_player():
     with open(f"{PATH_PLAYERS}{name}.ini", 'w') as cfg_player:
         cfg.write(cfg_player)
         cfg_player.flush()
+        
+    return name
+
+
+def load_player():
+    player_files = os.listdir(PATH_PLAYERS)
+    if player_files != None:
+        print("SELECT YOU PLAYER FILE\n")
+        
+        for i, p in enumerate(player_files):
+            print(f"[{i+1}] - {p[:-4]}")
+            
+        player_name_selection = int(input("\n: "))
+        
+        return player_files[player_name_selection-1]
+    else:
+        print("No existing player files")
+        sys.exit(1) # implement better game logic
+        
+        
+    return None

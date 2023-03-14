@@ -28,7 +28,7 @@ reclamation = """ ██▀███  ▓█████  ▄████▄   �
               
 
 
-def clear_screen(): # changed to this function because wipe did not work properly
+def clear_screen():
     os.system("clear") if os.name == "posix" else os.system("cls")
 
 def load_menu():

@@ -17,8 +17,8 @@ def config_write(name, section, key, value):
         cfgfile.flush()
 
 
-def config_read(name, section, key):
+def config_read(file, section, key):
     cfg = ConfigParser()
-    cfg.read(f"{PATH_PLAYERS}{name}.ini")
+    cfg.read(f"{PATH_PLAYERS}{file}")
 
     return cfg.get(section, key)

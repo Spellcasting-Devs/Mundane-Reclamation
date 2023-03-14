@@ -1,19 +1,35 @@
 import before.menu_loader as menu_loader
-import before.cfg_create_player as cfg_create_player
+import before.cfg_player_opartions as cfg_player_opartions
+from before.cfg_edit import (config_read)
 
 
-def menu_operations():
-    operation = menu_loader.load_menu()
+class Player:
+    def __init__(self, file):
+        self.name = config_read(file, 'CONSTANTS', 'player_name')
+        self.health = config_read(file, 'VARIABLES', 'health')
+        self.mana = config_read(file, 'VARIABLES', 'mana')
+        self.strength = config_read(file, 'VARIABLES', 'strength')
     
-    if operation == 0:
-        cfg_create_player.create_player() # create new player config 
-        # start game dialog after this?
+    def get_stats(self):
+        print(self.name, self.health, self.mana, self.strength)
+        
+    
+def player_data_injector(o):
+    if o == 0:
+        player_name = cfg_player_opartions.create_player()
+        player_file = player_name + '.ini'
     else:
-        pass
+        player_file = cfg_player_opartions.load_player()
+        
+    player = Player(player_file)
+    player.get_stats()
+    
+
     
     
 def main():
-    menu_operations()
+    operation = menu_loader.load_menu() # starts the menu
+    player_data_injector(operation)
 
 
 if __name__ == '__main__':
