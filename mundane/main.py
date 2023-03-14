@@ -24,8 +24,6 @@ def player_data_injector(o):
     player = Player(player_file)
     player.get_stats()
     
-
-    
     
 def main():
     operation = menu_loader.load_menu() # starts the menu

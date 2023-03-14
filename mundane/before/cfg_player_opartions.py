@@ -37,7 +37,7 @@ def create_player():
 def load_player():
     player_files = os.listdir(PATH_PLAYERS)
     if player_files != None:
-        print("SELECT YOU PLAYER FILE\n")
+        print("SELECT YOUR PLAYER FILE\n")
         
         for i, p in enumerate(player_files):
             print(f"[{i+1}] - {p[:-4]}")
