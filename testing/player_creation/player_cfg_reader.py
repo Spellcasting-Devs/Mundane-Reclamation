@@ -7,6 +7,12 @@ FILEPATH = f"{dirname(abspath(__file__))}/../players"
 
 
 
+"""
+This file would be used to easily read and write data from and to the player config files
+"""
+
+
+
 # writes values to keys of selected section
 def config_write(name, section, key, value):
     cfg = ConfigParser()

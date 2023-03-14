@@ -5,10 +5,18 @@ from os import system
 FILEPATH = f"{dirname(abspath(__file__))}/players"
 
 
+
+
+
 """
+This file would be connected to the menu functionality. I though about the possibility to create new player files or load existing ones 
+into the game.
+
+
 This is an example of how the creation of new player files could look like. A new .ini file with starter values is being initialized.
 System commands must yet be configured for differemt operating systems.
 """
+
 def new_game():
     name = str(input("enter your player name:"))
     system(f"cd {FILEPATH} && touch {name}.ini")
