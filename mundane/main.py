@@ -3,6 +3,8 @@ import before.cfg_player_opartions as cfg_player_opartions
 from before.cfg_edit import (config_read)
 
 
+
+
 class Player:
     def __init__(self, file):
         self.name = config_read(file, 'CONSTANTS', 'player_name')
@@ -21,13 +23,14 @@ def player_data_injector(o):
     else:
         player_file = cfg_player_opartions.load_player()
         
-    player = Player(player_file)
-    player.get_stats()
+    global player
+    player = Player(player_file) # the current player object with injected game data
     
     
 def main():
     operation = menu_loader.load_menu() # starts the menu
     player_data_injector(operation)
+    player.get_stats()
 
 
 if __name__ == '__main__':
