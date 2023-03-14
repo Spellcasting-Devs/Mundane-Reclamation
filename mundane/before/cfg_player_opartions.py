@@ -55,6 +55,3 @@ def load_player():
     else:
         print("No existing player files")
         sys.exit(1) # implement better game logic
-        
-        
-    return None
