@@ -94,7 +94,6 @@ def main(stdscr):
         elif key == curses.KEY_DOWN and current_row < len(player_files)-1:
             current_row += 1
         elif key == curses.KEY_ENTER or key in [10, 13]:
-            print(current_row)
             return player_files.index(player_files[current_row])
             
         print_menu(stdscr, current_row)
