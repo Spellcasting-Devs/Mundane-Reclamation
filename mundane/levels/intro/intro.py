@@ -4,6 +4,7 @@ import os
 from os.path import abspath, dirname
 
 
+
 FILE_PATH = dirname(abspath(__file__))
 
 
@@ -18,7 +19,8 @@ def type_text(text):
         time.sleep(0.02)
 
 
-def load_dialog():
+def load_intro_dialog():
+    clear_screen()
     with open(FILE_PATH + "/text/intro.txt") as f:
         for line in f.read().splitlines():
             line += "\n"
@@ -26,11 +28,20 @@ def load_dialog():
                 input("\n\nCONTINUE...")
                 clear_screen()
             type_text(line)
+            
+        username = create_username()
+        return username
         
-
-def main():
-    load_dialog()
-
-
-
-main()
+        
+def create_username():
+    print("\nSo, what name will thou have?")
+   
+    while True:
+        username = str(input(": "))
+        
+        if len(username) in range(3, 20):
+            break
+        else:
+            print("This username can not be taken, please try again.")
+            
+    return username

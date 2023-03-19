@@ -1,6 +1,9 @@
 import before.menu_loader as menu_loader
 import before.cfg_player_opartions as cfg_player_opartions
 import configparser
+
+import levels.intro.intro as intro
+
 from before.cfg_edit import config_read
 from os.path import abspath, dirname
 
@@ -54,8 +57,9 @@ class Game:
     
 def player_data_injector(o):
     if o == 0:
-        player_name = cfg_player_opartions.create_player()
-        player_file = player_name + '.ini'
+        username = intro.load_intro_dialog()
+        cfg_player_opartions.create_player(username)
+        player_file = username + '.ini'
     else:
         player_file = cfg_player_opartions.load_player()
         
