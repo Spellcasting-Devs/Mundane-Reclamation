@@ -9,7 +9,7 @@ from os.path import abspath, dirname
 - load menu and wait for operation
 - load player data to player 
 - load game data to game
-- load the current state of the game 
+- load the current state of the game
 """
 
 
@@ -38,6 +38,15 @@ class Game:
             self.data[chapter] = {}
             for key, value in game_config.items(chapter):
                 self.data[chapter][key] = value
+                          
+    def get_checkpoint_current(self): # returns the current, uncompleted checkpoint
+        for chapter in self.data:        
+            for section in self.data[chapter]:
+                if self.data[chapter][section] == "False":
+                    return chapter, section
+                
+    def set_checkpoint_enabled(self, chapter, section):
+        pass
       
     
 def player_data_injector(o):
@@ -54,13 +63,10 @@ def player_data_injector(o):
     game = Game(player_file) # creating game object with game state data from config
     
     
-def player_progression_loader():
-    pass
-    
-    
 def main():
     operation = menu_loader.load_menu() # loading the menu and wait for player operation
     player_data_injector(operation) # create / load player config file based on operation -> initiates player and game class objects and loads player data
+    
 
 
 if __name__ == '__main__':

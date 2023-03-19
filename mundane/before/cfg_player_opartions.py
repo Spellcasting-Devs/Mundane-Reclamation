@@ -29,8 +29,8 @@ def create_player():
         }
         
         cfg['CHAPTER1'] = {
-            'c1': False,
-            'c2': False,
+            'c1': True,
+            'c2': True,
             'c3': False,
         }
 
