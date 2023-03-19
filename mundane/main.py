@@ -48,15 +48,19 @@ def player_data_injector(o):
         player_file = cfg_player_opartions.load_player()
         
     global player
-    player = Player(player_file) # the current player object with injected game data
+    player = Player(player_file) # creating player object with player data from config
     
     global game
-    game = Game(player_file)
+    game = Game(player_file) # creating game object with game state data from config
+    
+    
+def player_progression_loader():
+    pass
     
     
 def main():
-    operation = menu_loader.load_menu() # starts the menu
-    player_data_injector(operation)
+    operation = menu_loader.load_menu() # loading the menu and wait for player operation
+    player_data_injector(operation) # create / load player config file based on operation -> initiates player and game class objects and loads player data
 
 
 if __name__ == '__main__':

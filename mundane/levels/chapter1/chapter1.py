@@ -1,3 +1,0 @@
-"""
-- load chapter data -> checkpoints
-"""
