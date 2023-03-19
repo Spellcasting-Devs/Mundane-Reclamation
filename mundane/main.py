@@ -12,7 +12,7 @@ from os.path import abspath, dirname
 - load the current state of the game
 """
 
-
+CHAPTERS = ['CHAPTER1']
 PATH_PLAYERS = f"{dirname(abspath(__file__))}/config/players/"
 
 class Player:
@@ -28,13 +28,14 @@ class Player:
 
 class Game:
     def __init__(self, file):
+        self.data = {}
+        self.checkpoint_file_location = ""
+        
+        # loading player progression data   
         game_config = configparser.ConfigParser()
         game_config.read(PATH_PLAYERS + file)
         
-        # storing chapter progression data in self.data
-        chapters = ['CHAPTER1']
-        self.data = {}
-        for chapter in chapters:
+        for chapter in CHAPTERS:
             self.data[chapter] = {}
             for key, value in game_config.items(chapter):
                 self.data[chapter][key] = value
@@ -43,7 +44,8 @@ class Game:
         for chapter in self.data:        
             for section in self.data[chapter]:
                 if self.data[chapter][section] == "False":
-                    return chapter, section
+                    self.checkpoint_file_location = f"{dirname(abspath(__file__))}/levels/{chapter.lower()}/{section}" # chapter and sections directories have to follow a naming format!
+                    return chapter.lower(), section # for example 'chapter1' 'c2' -> this is how directories have to be named
                 
     def set_checkpoint_enabled(self, chapter, section):
         pass
@@ -66,7 +68,7 @@ def player_data_injector(o):
 def main():
     operation = menu_loader.load_menu() # loading the menu and wait for player operation
     player_data_injector(operation) # create / load player config file based on operation -> initiates player and game class objects and loads player data
-    
+    chapter, section = game.get_checkpoint_current()
 
 
 if __name__ == '__main__':

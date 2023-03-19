@@ -1,7 +1,7 @@
 import time
 import sys
-from os.path import abspath, dirname
 import os
+from os.path import abspath, dirname
 
 
 FILE_PATH = dirname(abspath(__file__))
