@@ -2,7 +2,7 @@ import os
 import sys
 import curses
 from configparser import ConfigParser
-from os.path import (dirname, abspath)
+from os.path import dirname, abspath
 
 
 PATH_PLAYERS = f"{dirname(abspath(__file__))}/../config/players/"
@@ -19,13 +19,19 @@ def create_player():
         cfg = ConfigParser()
         
         cfg['CONSTANTS'] = {
-            'player_name': name
+            'player_name': name,
         }
         
-        cfg['VARIABLES'] = { # starter values defined here
+        cfg['VARIABLES'] = {
             'health': 100,
             'mana': 100,
-            'strength': 50
+            'strength': 50,
+        }
+        
+        cfg['CHAPTER1'] = {
+            'c1': False,
+            'c2': False,
+            'c3': False,
         }
 
         with open(f"{PATH_PLAYERS}{name}.ini", 'w') as cfg_player:
