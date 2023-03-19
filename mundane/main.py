@@ -6,10 +6,11 @@ from os.path import abspath, dirname
 
 
 """ GAME LIFE CYCLE
-- load menu and wait for operation
-- load player data to player 
-- load game data to game
-- load the current state of the game
+- load menu and wait for operation [x]
+- load player data to player [x]
+- load game data to game [x]
+- load the current state of the game [x]
+- position the player at the latest checkpoint []
 """
 
 CHAPTERS = ['CHAPTER1']
