@@ -56,11 +56,11 @@ class Game:
       
     
 def player_data_injector(o):
-    if o == 0:
+    if o == 0: # if selected new game
         username = intro.load_intro_dialog()
         cfg_player_opartions.create_player(username)
         player_file = username + '.ini'
-    else:
+    else: # if selected load game
         player_file = cfg_player_opartions.load_player()
         
     global player
