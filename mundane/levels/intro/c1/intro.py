@@ -3,9 +3,9 @@ import sys
 import os
 from os.path import abspath, dirname
 
+# FIXME: fuse load_intro_dialog and load_text_dialog later
 
-
-FILE_PATH = dirname(abspath(__file__))
+TEXT_FILE_PATH = f"{dirname(abspath(__file__))}/text/"
 
 
 def clear_screen():
@@ -19,9 +19,9 @@ def type_text(text):
         time.sleep(0.02)
 
 
-def load_intro_dialog():
+def load_intro_dialog(txt):
     clear_screen()
-    with open(FILE_PATH + "/text/intro.txt") as f:
+    with open(TEXT_FILE_PATH + txt) as f:
         for line in f.read().splitlines():
             line += "\n"
             if line.startswith("\n"):
@@ -31,6 +31,17 @@ def load_intro_dialog():
             
         username = create_username()
         return username
+  
+        
+def load_text_dialog(txt):
+    clear_screen()
+    with open(TEXT_FILE_PATH + txt) as f:
+        for line in f.read().splitlines():
+            line += "\n"
+            if line.startswith("\n"):
+                input("\n\nCONTINUE...")
+                clear_screen()
+            type_text(line)
         
         
 def create_username():
@@ -45,3 +56,7 @@ def create_username():
             print("This username can not be taken, please try again.")
             
     return username
+
+
+def main():
+    load_text_dialog('intro_0.txt')

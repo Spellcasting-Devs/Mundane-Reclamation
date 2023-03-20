@@ -26,6 +26,10 @@ def create_player(name):
         'strength': 50,
     }
     
+    cfg['INTRO'] = {
+        'c1': False,
+    }
+    
     cfg['CHAPTER1'] = {
         'c1': False,
         'c2': False,

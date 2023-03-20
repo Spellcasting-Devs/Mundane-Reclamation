@@ -1,14 +1,15 @@
 import before.menu_loader as menu_loader
 import before.cfg_player_opartions as cfg_player_opartions
 import configparser
-import levels.intro.intro as intro
+import levels.intro.c1.intro as intro
 from before.cfg_edit import config_read
 from os.path import abspath, dirname
 
 
-
-CHAPTERS = ['CHAPTER1']
+CHAPTERS = ['INTRO', 'CHAPTER1']
 PATH_PLAYERS = f"{dirname(abspath(__file__))}/config/players/"
+
+
 
 class Player:
     def __init__(self, file):
@@ -48,7 +49,7 @@ class Game:
     
 def player_data_injector(o):
     if o == 0: # if selected new game
-        username = intro.load_intro_dialog()
+        username = intro.load_intro_dialog('intro.txt')
         cfg_player_opartions.create_player(username)
         player_file = username + '.ini'
     else: # if selected load game
@@ -59,12 +60,17 @@ def player_data_injector(o):
     
     global game
     game = Game(player_file) # creating game object with game state data from config
+   
+   
+def chapter_loader(chapter, checkpoint):
+    pass
     
     
 def main():
     operation = menu_loader.load_menu() # loading the menu and wait for player operation
     player_data_injector(operation) # create / load player config file based on operation -> initiates player and game class objects and loads player data
-    chapter, section = game.get_checkpoint_current() # chapter and section represent the revelvant checkpoint for the player
+    chapter, checkpoint = game.get_checkpoint_current() # chapter and section represent the revelvant checkpoint for the player
+    chapter_loader(chapter, checkpoint) # load the ejected chapter and checkpoint and direct the game to the right state
 
     # TODO: Put the player at his current checkpoint
     # I though about creating a file structure like levels/chapter1/c1 representing the current chapter and checkpoint
