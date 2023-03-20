@@ -78,7 +78,7 @@ def main():
     # TODO: Put the player at his current checkpoint
     # I though about creating a file structure like levels/chapter1/c1 representing the current chapter and checkpoint
     # We could store any relevant ressources for each chapter in a dedicated location 
-    # This would provide a structure and enables us to pull relevant content seperately
+    # This would provide a structure and enables us to pull the content that is needed from the directories
 
 if __name__ == '__main__':
     main()
