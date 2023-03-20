@@ -73,8 +73,9 @@ def player_data_injector(o):
 def main():
     operation = menu_loader.load_menu() # loading the menu and wait for player operation
     player_data_injector(operation) # create / load player config file based on operation -> initiates player and game class objects and loads player data
-    chapter, section = game.get_checkpoint_current()
+    chapter, section = game.get_checkpoint_current() # chapter and section represent the revelvant checkpoint for the player
 
+    # TODO: Put the player at his current checkpoint
 
 if __name__ == '__main__':
     main()
