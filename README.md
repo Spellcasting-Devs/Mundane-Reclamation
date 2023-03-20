@@ -19,4 +19,4 @@ Mundane Reclamation is a small terminal-based RPG where you have to fight off en
 
 ## DEVELOPMENT NOTES
 
-type `python -B file.py` to avoid pycache files
+when executing, type `python -B main.py` to avoid pycache files
