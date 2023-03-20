@@ -2,41 +2,40 @@ import os
 import sys
 import curses
 from configparser import ConfigParser
-from os.path import (dirname, abspath)
+from os.path import dirname, abspath
 
 
 PATH_PLAYERS = f"{dirname(abspath(__file__))}/../config/players/"
 
 
-def create_player():
-    name = str(input("Enter your player name: "))
-    if len(name) in range(1, 20):
-        if os.name == 'posix':
-            os.system(f"cd {PATH_PLAYERS} && touch {name}.ini")
-        else:
-            os.system(f"cd {PATH_PLAYERS} && type NUL > {name}.ini")
-        
-        cfg = ConfigParser()
-        
-        cfg['CONSTANTS'] = {
-            'player_name': name
-        }
-        
-        cfg['VARIABLES'] = { # starter values defined here
-            'health': 100,
-            'mana': 100,
-            'strength': 50
-        }
-
-        with open(f"{PATH_PLAYERS}{name}.ini", 'w') as cfg_player:
-            cfg.write(cfg_player)
-            cfg_player.flush()
-            
-        return name
+def create_player(name):
+    if os.name == 'posix':
+        os.system(f"cd {PATH_PLAYERS} && touch {name}.ini")
     else:
-        print("You did not provide a valid name. Please try again.")
-        sys.exit(1)
+        os.system(f"cd {PATH_PLAYERS} && type NUL > {name}.ini")
+    
+    cfg = ConfigParser()
+    
+    cfg['CONSTANTS'] = {
+        'player_name': name,
+    }
+    
+    cfg['VARIABLES'] = {
+        'health': 100,
+        'mana': 100,
+        'strength': 50,
+    }
+    
+    cfg['CHAPTER1'] = {
+        'c1': False,
+        'c2': False,
+        'c3': False,
+    }
 
+    with open(f"{PATH_PLAYERS}{name}.ini", 'w') as cfg_player:
+        cfg.write(cfg_player)
+        cfg_player.flush()
+        
 
 def load_player():
     global player_files
@@ -94,7 +93,6 @@ def main(stdscr):
         elif key == curses.KEY_DOWN and current_row < len(player_files)-1:
             current_row += 1
         elif key == curses.KEY_ENTER or key in [10, 13]:
-            print(current_row)
             return player_files.index(player_files[current_row])
             
         print_menu(stdscr, current_row)

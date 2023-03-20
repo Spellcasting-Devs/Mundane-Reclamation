@@ -1,5 +1,6 @@
 import curses
 import os
+import sys
 
 MENU = ['New Game', 'Load Game', 'Exit']
 
@@ -86,11 +87,12 @@ def main(stdscr):
         elif key == curses.KEY_DOWN and current_row < len(MENU)-1:
             current_row += 1
         elif key == curses.KEY_ENTER or key in [10, 13]:
-            if current_row == 0:
+            if current_row == len(MENU)-1:
+                sys.exit(1)
+            
+            elif current_row == 0:
                 return 0
-            elif current_row == 1:
-                return 1
             else:
-                break
+                return 1
             
         print_menu(stdscr, current_row)

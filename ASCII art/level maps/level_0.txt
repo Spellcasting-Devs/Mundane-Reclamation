@@ -18,7 +18,3 @@
 #    #    ###      ╚══════════╝          ┴                       #     
 #   #        #                                                  #     
 ####          ##################################################       
-
-
-Proposed map for level 0; X is for player, # is for map border, O is the boss
-It should have the name "Batpism By Fire".
