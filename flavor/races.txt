@@ -1,0 +1,15 @@
+There are many races wandering on the very Mundus.
+Choose any of the following races:
+
+
+Human
+Elven
+Halfling
+Dwarven
+Orc
+Tiefling
+Fennak
+Tabaxi
+Kobold
+Dragonborn
+
