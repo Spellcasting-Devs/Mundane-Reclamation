@@ -1,7 +1,7 @@
 import before.menu_loader as menu_loader
 import before.cfg_player_opartions as cfg_player_opartions
 import configparser
-import levels.intro.c1.intro as intro
+import levels.intro as intro
 from before.cfg_edit import config_read
 from os.path import abspath, dirname
 
@@ -63,7 +63,8 @@ def player_data_injector(o):
    
    
 def chapter_loader(chapter, checkpoint):
-    pass
+    if chapter == 'intro':
+        intro.c1()
     
     
 def main():

@@ -58,5 +58,8 @@ def create_username():
     return username
 
 
-def main():
+def c1():
     load_text_dialog('intro_0.txt')
+    
+    # do intro checkpoint stuff here 
+    # if done, mark checkpoint as completed, then load next
