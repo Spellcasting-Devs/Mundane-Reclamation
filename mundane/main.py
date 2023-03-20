@@ -1,20 +1,11 @@
 import before.menu_loader as menu_loader
 import before.cfg_player_opartions as cfg_player_opartions
 import configparser
-
 import levels.intro.intro as intro
-
 from before.cfg_edit import config_read
 from os.path import abspath, dirname
 
 
-""" GAME LIFE CYCLE
-- load menu and wait for operation [x]
-- load player data to player [x]
-- load game data to game [x]
-- load the current state of the game [x]
-- position the player at the latest checkpoint []
-"""
 
 CHAPTERS = ['CHAPTER1']
 PATH_PLAYERS = f"{dirname(abspath(__file__))}/config/players/"
