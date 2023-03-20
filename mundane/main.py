@@ -79,7 +79,8 @@ def main():
     # I though about creating a file structure like levels/chapter1/c1 representing the current chapter and checkpoint
     # We could store any relevant ressources for each chapter in a dedicated location 
     # This would provide a structure and enables us to pull the content that is needed from the directories
-
+    # To makes this work, all files would have to follow a strict naming convention
+    
 if __name__ == '__main__':
     main()
     
