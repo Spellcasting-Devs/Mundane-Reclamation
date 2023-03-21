@@ -13,6 +13,8 @@ def create_player(name, race):
         os.system(f"cd {PATH_PLAYERS} && touch {name}.ini")
     else:
         os.system(f"cd {PATH_PLAYERS} && type NUL > {name}.ini")
+        
+    race_stats = get_race_stats(race)
     
     cfg = ConfigParser()
     
@@ -40,6 +42,19 @@ def create_player(name, race):
     with open(f"{PATH_PLAYERS}{name}.ini", 'w') as cfg_player:
         cfg.write(cfg_player)
         cfg_player.flush()
+      
+      
+def get_race_stats(race):
+    race_stats = {
+        'Human': {
+            'health': 100,
+            'strength': 50,
+        },
+        'Elves': {
+            'health': 120,
+            'strength': 90,
+        }
+    }
         
 
 def load_player():
