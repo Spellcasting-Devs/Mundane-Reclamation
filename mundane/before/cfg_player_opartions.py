@@ -6,6 +6,16 @@ from os.path import dirname, abspath
 
 
 PATH_PLAYERS = f"{dirname(abspath(__file__))}/../config/players/"
+RACE_STATS = {
+    'Human': {
+        'health': 100,
+        'strength': 50,
+    },
+    'Elves': {
+        'health': 120,
+        'strength': 90,
+    }
+}
 
 
 def create_player(name, race):
@@ -14,7 +24,7 @@ def create_player(name, race):
     else:
         os.system(f"cd {PATH_PLAYERS} && type NUL > {name}.ini")
         
-    race_stats = get_race_stats(race)
+    #race_stats = get_race_stats(race)
     
     cfg = ConfigParser()
     
@@ -45,16 +55,7 @@ def create_player(name, race):
       
       
 def get_race_stats(race):
-    race_stats = {
-        'Human': {
-            'health': 100,
-            'strength': 50,
-        },
-        'Elves': {
-            'health': 120,
-            'strength': 90,
-        }
-    }
+    pass
         
 
 def load_player():
