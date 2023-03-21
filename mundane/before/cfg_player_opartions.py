@@ -8,7 +8,7 @@ from os.path import dirname, abspath
 PATH_PLAYERS = f"{dirname(abspath(__file__))}/../config/players/"
 
 
-def create_player(name):
+def create_player(name, race):
     if os.name == 'posix':
         os.system(f"cd {PATH_PLAYERS} && touch {name}.ini")
     else:
@@ -18,6 +18,7 @@ def create_player(name):
     
     cfg['CONSTANTS'] = {
         'player_name': name,
+        'player_race': race,
     }
     
     cfg['VARIABLES'] = {

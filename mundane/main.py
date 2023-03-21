@@ -50,7 +50,8 @@ class Game:
 def player_data_injector(o):
     if o == 0: # if selected new game
         username = intro.load_intro_dialog('intro.txt')
-        cfg_player_opartions.create_player(username)
+        race = intro.set_player_race()
+        cfg_player_opartions.create_player(username, race)
         player_file = username + '.ini'
     else: # if selected load game
         player_file = cfg_player_opartions.load_player()
