@@ -34,7 +34,7 @@ Tiefling - Infernal Charisma
 - strength = 50
 - barter = 100
 
-Fennak - Where's the Sand!?
+Fennak - Where's The Sand!?
 - health = 50
 - mana = 50
 - strength = 75
