@@ -6,16 +6,7 @@ from os.path import dirname, abspath
 
 
 PATH_PLAYERS = f"{dirname(abspath(__file__))}/../config/players/"
-RACE_STATS = {
-    'Human': {
-        'health': 100,
-        'strength': 50,
-    },
-    'Elves': {
-        'health': 120,
-        'strength': 90,
-    }
-}
+PATH_RACES = f"{dirname(abspath(__file__))}/../config/races/"
 
 
 def create_player(name, race):
@@ -24,7 +15,7 @@ def create_player(name, race):
     else:
         os.system(f"cd {PATH_PLAYERS} && type NUL > {name}.ini")
         
-    #race_stats = get_race_stats(race)
+    race_stats = get_race_stats(race)
     
     cfg = ConfigParser()
     
@@ -34,9 +25,10 @@ def create_player(name, race):
     }
     
     cfg['VARIABLES'] = {
-        'health': 100,
-        'mana': 100,
-        'strength': 50,
+        'health': race_stats[0],
+        'mana': race_stats[1],
+        'strength': race_stats[2],
+        'barter': race_stats[3],
     }
     
     cfg['INTRO'] = {
@@ -55,8 +47,15 @@ def create_player(name, race):
       
       
 def get_race_stats(race):
-    pass
+    config = ConfigParser()
+    config.read(PATH_RACES + "races.ini")
+
+    races = config.items(race.upper())        
+    race_stats = []
+    for r, s in races:
+        race_stats.append(s)
         
+    return race_stats
 
 def load_player():
     global player_files
