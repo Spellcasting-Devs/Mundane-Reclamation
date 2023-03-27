@@ -7,11 +7,11 @@ from os.path import abspath, dirname
 
 TEXT_FILE_PATH = f"{dirname(abspath(__file__))}/text/"
 RACES = [
-    'Human',
+    'HUMAN',
     'Elven',
     'Halfling',
     'Dwarven',
-    'Orc',
+    'Berserkers',
     'Tiefling',
     'Fennak',
     'Tabaxi',
