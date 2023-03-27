@@ -1,0 +1,60 @@
+Human - Jack Of All Trades
+- health = 100
+- mana = 50
+- strength = 50
+- barter = 50
+
+Elven - Renowned Magicians
+- health = 50
+- mana = 100
+- strength = 50
+- barter = 50
+
+Halfling - Nimble Yet Brave
+- health = 75
+- mana = 50
+- strength = 75
+- barter = 50
+
+Dwarven - Stout Warriors
+- health = 75
+- mana = 25
+- strength = 100
+- barter = 50
+
+Orc - Berserkers
+- health = 100
+- mana = 25
+- strength = 100
+- barter = 25
+
+Tiefling - Infernal Charisma
+- health = 50
+- mana = 50
+- strength = 50
+- barter = 100
+
+Fennak - Where's The Sand!?
+- health = 50
+- mana = 50
+- strength = 75
+- barter = 75
+
+Tabaxi - Sneaky Bastards
+- health = 50
+- mana = 50
+- strength = 100
+- barter = 50
+
+Kobold - Small Yet Dangerous
+- health = 25
+- mana = 50
+- strength = 100
+- barter = 75
+
+Dragonborn - With Honour
+- health = 50
+- mana = 50
+- strength = 50
+- barter = 100
+
