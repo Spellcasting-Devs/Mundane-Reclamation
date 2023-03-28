@@ -1,6 +1,9 @@
 So, your name is... [player name].
 And your race is... [player race].
+
 Welcome to Mundus, hero. The world created by the ancient divines long, long ago.
+The world with two moons. Thriving with life despite the chaos that happened long ago.
+Life still goes on, albeit scarred. Beaten, but not giving up.
 
 Like many others, you are just a farmer living a calm, rural life.
 Race does not matter, for all they care about contribution to the community only.
