@@ -1,6 +1,13 @@
-Like many others, you are just a farmer living a rural life.
+So, your name is... [player name].
+And your race is... [player race].
+Welcome to Mundus, hero. The world created by the ancient divines long, long ago.
+
+Like many others, you are just a farmer living a calm, rural life.
 Race does not matter, for all they care about contribution to the community only.
 You enjoy planting crops and harvesting them. Life is simple, no rush.
+
+You sometimes miss the older times, when everything was beautiful and peaceful.
+Today is the festival, to celebrate successful harvest of this year.
 You go to have a nice little toast with your fellow farmers until suddenly...
 
 Your village is raided by a group of barbarians! People flee and die.
