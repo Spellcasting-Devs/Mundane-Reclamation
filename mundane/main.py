@@ -1,8 +1,6 @@
-import before.menu_loader as menu_loader
-import before.cfg_player_opartions as cfg_player_opartions
 import configparser
-import levels.intro as intro
-from before.cfg_edit import config_read
+import before.load_menu as load_menu
+import before.create_player as create_player
 from os.path import abspath, dirname
 
 
@@ -13,13 +11,17 @@ PATH_PLAYERS = f"{dirname(abspath(__file__))}/config/players/"
 
 class Player:
     def __init__(self, file):
-        self.name = config_read(file, 'CONSTANTS', 'player_name')
-        self.health = config_read(file, 'VARIABLES', 'health')
-        self.mana = config_read(file, 'VARIABLES', 'mana')
-        self.strength = config_read(file, 'VARIABLES', 'strength')
+        config = configparser.ConfigParser()
+        config.read(PATH_PLAYERS + file)
+        
+        self.name = config.get('CONSTANTS', 'player_name')
+        self.race = config.get('CONSTANTS', 'player_race')
+        self.health = config.get('VARIABLES', 'health')
+        self.mana = config.get('VARIABLES', 'mana')
+        self.strength = config.get('VARIABLES', 'strength')
     
     def get_stats(self):
-        print(self.name, self.health, self.mana, self.strength)
+        print(self.name, self.race, self.health, self.mana, self.strength)
 
 
 class Game:
@@ -56,21 +58,23 @@ def player_data_injector(o):
     else: # if selected load game
         player_file = cfg_player_opartions.load_player()
         
+    return player_file
+   
+   
+def chapter_loader(chapter, checkpoint):
+    pass
+    
+    
+def main():
+    operation = menu_loader.load_menu() # loading the menu and wait for player operation
+    player_file = player_data_injector(operation) # create / load player config file based on operation -> initiates player and game class objects and loads player data
+    
     global player
     player = Player(player_file) # creating player object with player data from config
     
     global game
     game = Game(player_file) # creating game object with game state data from config
-   
-   
-def chapter_loader(chapter, checkpoint):
-    if chapter == 'intro':
-        intro.c1()
     
-    
-def main():
-    operation = menu_loader.load_menu() # loading the menu and wait for player operation
-    player_data_injector(operation) # create / load player config file based on operation -> initiates player and game class objects and loads player data
     chapter, checkpoint = game.get_checkpoint_current() # chapter and section represent the revelvant checkpoint for the player
     chapter_loader(chapter, checkpoint) # load the ejected chapter and checkpoint and direct the game to the right state
 
@@ -79,7 +83,7 @@ def main():
     # We could store any relevant ressources for each chapter in a dedicated location 
     # This would provide a structure and enables us to pull the content that is needed from the directories
     # To makes this work, all files would have to follow a strict naming convention
+  
     
 if __name__ == '__main__':
     main()
-    
