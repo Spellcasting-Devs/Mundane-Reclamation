@@ -1,3 +1,5 @@
+Standard stats for each race
+
 Human - Jack Of All Trades
 - health = 100
 - mana = 50

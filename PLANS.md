@@ -20,3 +20,12 @@ Player info:
 Now you can either create a new player or select an existing player and load its file data into a player object"
 
 Save game: JSON?
+
+Levels: 
+
+Level 0: Baptism By Fire (tutorial level)
+Level 1: Over The Hills
+Level 2: Degenerates, Degenerates Everywhere
+Level 3: The Hunt For Red Witch
+Level 4: Blackburn's Revenge
+Level 5: The Final Struggle
