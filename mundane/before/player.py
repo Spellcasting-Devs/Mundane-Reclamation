@@ -9,6 +9,7 @@ PATH_PLAYERS = f"{dirname(abspath(__file__))}/../config/players/"
 PATH_RACES = f"{dirname(abspath(__file__))}/../config/races/"
 
 
+
 def create_player(name, race):
     if os.name == 'posix':
         os.system(f"cd {PATH_PLAYERS} && touch {name}.ini")
@@ -56,6 +57,7 @@ def get_race_stats(race):
         race_stats.append(s)
         
     return race_stats
+
 
 def load_player():
     global player_files
