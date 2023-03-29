@@ -32,20 +32,18 @@ reclamation = """ ██▀███  ▓█████  ▄████▄   �
 def clear_screen():
     os.system("clear") if os.name == "posix" else os.system("cls")
 
+
 def load_menu():
-    load_title_screen()
-    return_code = curses.wrapper(main)
-    
     clear_screen()
     
-    return return_code # the return code defines the operation which has to be performed -> 0: create new player, 1: load player data
-
-
-def load_title_screen():
-    clear_screen()
     print(f"\n{mundane}\n{reclamation}\n")
     print("PRESS ENTER TO START...\n")
     input()
+    
+    return_code = curses.wrapper(main)
+    
+    clear_screen()
+    return return_code # the return code defines the operation which has to be performed -> 0: create new player, 1: load player data
     
     
 def print_menu(stdscr, selected_row_idx):

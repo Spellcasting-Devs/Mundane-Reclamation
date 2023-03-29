@@ -1,19 +1,20 @@
 import configparser
-import before.load_menu as load_menu
-import before.create_player as create_player
+import before.menu as menu
+import before.player as player
+import levels.intro as intro
 from os.path import abspath, dirname
 
 
 CHAPTERS = ['INTRO', 'CHAPTER1']
 PATH_PLAYERS = f"{dirname(abspath(__file__))}/config/players/"
-
+config = configparser.ConfigParser()
 
 
 class Player:
     def __init__(self, file):
-        config = configparser.ConfigParser()
         config.read(PATH_PLAYERS + file)
         
+        self.config_file = PATH_PLAYERS + file
         self.name = config.get('CONSTANTS', 'player_name')
         self.race = config.get('CONSTANTS', 'player_race')
         self.health = config.get('VARIABLES', 'health')
@@ -26,13 +27,12 @@ class Player:
 
 class Game:
     def __init__(self, file):
+        config.read(PATH_PLAYERS + file)
+        
+        self.config_file = PATH_PLAYERS + file
         self.data = {}
         self.checkpoint_file_location = ""
-        
-        # loading player progression data   
-        game_config = configparser.ConfigParser()
-        game_config.read(PATH_PLAYERS + file)
-        
+                
         for chapter in CHAPTERS:
             self.data[chapter] = {}
             for key, value in game_config.items(chapter):
@@ -43,30 +43,31 @@ class Game:
             for section in self.data[chapter]:
                 if self.data[chapter][section] == "False":
                     self.checkpoint_file_location = f"{dirname(abspath(__file__))}/levels/{chapter.lower()}/{section}" # chapter and sections directories have to follow a naming format!
-                    return chapter.lower(), section # for example 'chapter1' 'c2' -> this is how directories have to be named
+                    return chapter.upper(), section # for example 'CHAPTER1' 'c2' -> this is how directories have to be named
                 
     def set_checkpoint_enabled(self, chapter, section):
-        pass
+        config.read(self.config_file)
+        config[chapter][section] = "True"
+        
+        with open(self.config_file, "w") as configfile:
+            config.write(configfile)
+        
       
     
 def player_data_injector(o):
-    if o == 0: # if selected new game
-        username = intro.load_intro_dialog('intro.txt')
+    if o == 0: # new game
+        username = intro.dialog('intro.txt', True)
         race = intro.set_player_race()
-        cfg_player_opartions.create_player(username, race)
+        player.create_player(username, race)
         player_file = username + '.ini'
-    else: # if selected load game
-        player_file = cfg_player_opartions.load_player()
+    else: # load game
+        player_file = player.load_player()
         
     return player_file
    
-   
-def chapter_loader(chapter, checkpoint):
-    pass
-    
     
 def main():
-    operation = menu_loader.load_menu() # loading the menu and wait for player operation
+    operation = menu.load_menu() # loading the menu and wait for player operation
     player_file = player_data_injector(operation) # create / load player config file based on operation -> initiates player and game class objects and loads player data
     
     global player
@@ -76,7 +77,6 @@ def main():
     game = Game(player_file) # creating game object with game state data from config
     
     chapter, checkpoint = game.get_checkpoint_current() # chapter and section represent the revelvant checkpoint for the player
-    chapter_loader(chapter, checkpoint) # load the ejected chapter and checkpoint and direct the game to the right state
 
     # TODO: Put the player at his current checkpoint
     # I though about creating a file structure like levels/chapter1/c1 representing the current chapter and checkpoint
