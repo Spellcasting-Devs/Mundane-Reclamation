@@ -1,0 +1,4 @@
+intro_0.txt
+old_farmer.txt (art included)
+clarity.txt
+forest.txt (art included)
