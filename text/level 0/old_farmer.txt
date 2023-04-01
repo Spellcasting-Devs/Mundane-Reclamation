@@ -1,11 +1,18 @@
-"Phew! Glad you're safe and sound..."
-"My young one, you must leave the place!"
-"It's too dangerous to keep living here..."
-"Take this, you'll be gratefl for it."
+Just after you defeated the strongest barbarian, the old man comes out of cover.
+Stains of blood can be seen on his sword as well on his clothes.
 
-You take his old and reliable one-handed sword.
+"Phew! Glad you're safe and sound..."
+
+"My young one, you must leave the place!"
+
+"It's too dangerous to keep living here..."
+
+"Take this, you'll be grateful for it."
+
+You take his old and reliable one-handed sword that he offers.
 
 "Farewell, take care of yourself well. May the gods protect us."
 
 The village is set ablaze by the raiders. You ran away into nearest the woods.
 It's midnight. You lie down, facing the tree branches. The sky is starry.
+You wonder if the old man survived or not. But it is too late to return now.
