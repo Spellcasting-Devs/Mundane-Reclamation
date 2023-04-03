@@ -1,1 +1,22 @@
-TBD
+
+
+                 ^
+         |  ^  | ║
+         └-/|\-┘ ║ 
+          ▀▀▀▀▀  ║
+          |   |  ║
+           \_/   ║
+            |    ╩
+       +----┼----╬
+            |    Ô
+         ^__┴__^ 
+         |     | 
+         |<   >|
+        /|     |\
+       /( O   O )\ 
+      /  \─────/  \
+     /   /     \   \
+        /       \
+       |         |
+
+Initial design for the barbarian horseback, found in level 0
