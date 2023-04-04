@@ -6,30 +6,30 @@ from os.path import dirname, abspath
 
 
 PATH_PLAYERS = f"{dirname(abspath(__file__))}/../config/players/"
-PATH_RACES = f"{dirname(abspath(__file__))}/../config/races/"
+PATH_ROLES = f"{dirname(abspath(__file__))}/../config/roles/"
 
 
 
-def create_player(name, race):
+def create_player(name, role):
     if os.name == 'posix':
         os.system(f"cd {PATH_PLAYERS} && touch {name}.ini")
     else:
         os.system(f"cd {PATH_PLAYERS} && type NUL > {name}.ini")
         
-    race_stats = get_race_stats(race)
+    role_stats = get_role_stats(role)
     
     cfg = ConfigParser()
     
-    cfg['CONSTANTS'] = {
+    cfg['CHARACTER'] = {
         'player_name': name,
-        'player_race': race,
+        'player_role': role,
     }
     
-    cfg['VARIABLES'] = {
-        'health': race_stats[0],
-        'mana': race_stats[1],
-        'strength': race_stats[2],
-        'barter': race_stats[3],
+    cfg['BASE_STATS'] = {
+        'health': role_stats[0],
+        'mana': role_stats[1],
+        'strength': role_stats[2],
+        'barter': role_stats[3],
     }
     
     cfg['INTRO'] = {
@@ -47,33 +47,30 @@ def create_player(name, race):
         cfg_player.flush()
       
       
-def get_race_stats(race):
+def get_role_stats(role):
     config = ConfigParser()
-    config.read(PATH_RACES + "races.ini")
+    config.read(PATH_ROLES + "roles.ini")
 
-    races = config.items(race.upper())        
-    race_stats = []
-    for r, s in races:
-        race_stats.append(s)
+    roles = config.items(role.upper())        
+    role_stats = []
+    for r, s in roles:
+        role_stats.append(s)
         
-    return race_stats
+    return role_stats
 
 
-def load_player():
+def load_player() -> str:
     global player_files
     player_files = os.listdir(PATH_PLAYERS)
-    if player_files != None:
+    
+    if len(player_files) > 0:
         player_name_selection = curses.wrapper(main)
         player_name_selection += 1
         
         if player_name_selection in range(1, len(player_files)+1):
             return player_files[player_name_selection-1]
-        else:
-            print("Unknown operation")
-            sys.exit(1)
-    else:
-        print("No existing player files")
-        sys.exit(1) # implement better game logic
+
+    return "0"
 
 
 def print_menu(stdscr, selected_row_idx):

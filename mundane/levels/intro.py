@@ -6,7 +6,7 @@ from os.path import abspath, dirname
 
 
 TEXT_FILE_PATH = f"{dirname(abspath(__file__))}/text/"
-RACES = [
+ROLES = [
     'Human',
     'Elven',
     'Halfling',
@@ -44,17 +44,19 @@ def dialog(txt, intro=False):
             type_text(line)
             
         if intro:
-            username = create_username()
+            username = set_name()
             return username
 
   
-def create_username():
-    print("\nSo, what name will thou have?")
+def set_name():
+    print("\nSo, what name will thou have? ('exit' to close the game)")
    
     while True:
         username = str(input(": "))
         
-        if len(username) in range(3, 20):
+        if username.lower() == 'exit':
+            sys.exit(1)
+        elif len(username) in range(3, 20):
             break
         else:
             print("This username can not be taken, please try again.")
@@ -62,20 +64,21 @@ def create_username():
     return username
   
 
-def set_player_race():
-    race = curses.wrapper(main)
-    # if race == 10:
-    #     sys.exit(1)
+def set_role():
+    role = curses.wrapper(main)
+    
+    if role == 10:
+        sys.exit(1)
   
-    return RACES[race]
+    return ROLES[role]
 
 
 def print_menu(stdscr, selected_row_idx):
     stdscr.clear()
     h, w = stdscr.getmaxyx()
-    for idx, row in enumerate(RACES):
+    for idx, row in enumerate(ROLES):
         x = w//2 - len(row)//2
-        y = h//2 - len(RACES)//2 + idx
+        y = h//2 - len(ROLES)//2 + idx
         if idx == selected_row_idx:
             stdscr.attron(curses.color_pair(1))
             stdscr.addstr(y, x, row)
@@ -106,10 +109,10 @@ def main(stdscr):
 
         if key == curses.KEY_UP and current_row > 0:
             current_row -= 1
-        elif key == curses.KEY_DOWN and current_row < len(RACES)-1:
+        elif key == curses.KEY_DOWN and current_row < len(ROLES)-1:
             current_row += 1
         elif key == curses.KEY_ENTER or key in [10, 13]:
-            if current_row == len(RACES)-1:
+            if current_row == len(ROLES)-1:
                 sys.exit(1)
             else:
                 return current_row

@@ -10,19 +10,21 @@ PATH_PLAYERS = f"{dirname(abspath(__file__))}/config/players/"
 config = configparser.ConfigParser()
 
 
+
 class Player:
     def __init__(self, file):
         config.read(PATH_PLAYERS + file)
         
         self.config_file = PATH_PLAYERS + file
-        self.name = config.get('CONSTANTS', 'player_name')
-        self.race = config.get('CONSTANTS', 'player_race')
-        self.health = config.get('VARIABLES', 'health')
-        self.mana = config.get('VARIABLES', 'mana')
-        self.strength = config.get('VARIABLES', 'strength')
+        self.name = config.get('CHARACTER', 'player_name')
+        self.role = config.get('CHARACTER', 'player_role')
+        self.health = config.get('BASE_STATS', 'health')
+        self.mana = config.get('BASE_STATS', 'mana')
+        self.strength = config.get('BASE_STATS', 'strength')
+        self.barter = config.get('BASE_STATS', 'barter')
     
     def get_stats(self):
-        print(self.name, self.race, self.health, self.mana, self.strength)
+        print(self.name, self.role, self.health, self.mana, self.strength, self.barter)
 
 
 class Game:
@@ -35,7 +37,7 @@ class Game:
                 
         for chapter in CHAPTERS:
             self.data[chapter] = {}
-            for key, value in game_config.items(chapter):
+            for key, value in config.items(chapter):
                 self.data[chapter][key] = value
                           
     def get_checkpoint_current(self): # returns the current, uncompleted checkpoint
@@ -51,24 +53,26 @@ class Game:
         
         with open(self.config_file, "w") as configfile:
             config.write(configfile)
-        
-      
+         
     
 def player_data_injector(o):
     if o == 0: # new game
         username = intro.dialog('intro.txt', True)
-        race = intro.set_player_race()
-        player.create_player(username, race)
+        role = intro.set_role()
+        player.create_player(username, role)
         player_file = username + '.ini'
     else: # load game
         player_file = player.load_player()
-        
+            
     return player_file
    
     
 def main():
     operation = menu.load_menu() # loading the menu and wait for player operation
     player_file = player_data_injector(operation) # create / load player config file based on operation -> initiates player and game class objects and loads player data
+    
+    if player_file == "0":
+        main()
     
     global player
     player = Player(player_file) # creating player object with player data from config
@@ -77,6 +81,8 @@ def main():
     game = Game(player_file) # creating game object with game state data from config
     
     chapter, checkpoint = game.get_checkpoint_current() # chapter and section represent the revelvant checkpoint for the player
+    print(chapter, checkpoint)
+    player.get_stats()
 
     # TODO: Put the player at his current checkpoint
     # I though about creating a file structure like levels/chapter1/c1 representing the current chapter and checkpoint
