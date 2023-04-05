@@ -1,6 +1,3 @@
-So, your name is... [player name].
-And your race is... [player race].
-
 Welcome to Mundus, hero. The world created by the ancient divines long, long ago.
 The world with two moons. Thriving with life despite the chaos that happened long ago.
 Life still goes on, albeit scarred. Beaten, but not giving up that easily.
@@ -13,7 +10,7 @@ You sometimes miss the older times, when everything was beautiful, when you had 
 Today is the festival, to celebrate successful harvest of this year.
 You go to have a nice little toast with your fellows in the village until suddenly...
 
-Your village is raided by a group of barbarians! People flee and die.
+Your village is raided by a group of barbarians! Some flee while others are getting slaughtered.
 You grab your recently sharpened scythe and make your stand against the treacherous invaders.
 You probably have barely any combat experience, but you will do as much as you can.
 

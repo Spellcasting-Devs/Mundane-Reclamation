@@ -5,7 +5,7 @@ import curses
 from os.path import abspath, dirname
 
 
-TEXT_FILE_PATH = f"{dirname(abspath(__file__))}/text/"
+TEXT_PATH = f"{dirname(abspath(__file__))}/text/intro/"
 ROLES = [
     'Human',
     'Elven',
@@ -35,7 +35,7 @@ def type_text(text):
 
 def dialog(txt, intro=False):
     clear_screen()
-    with open(TEXT_FILE_PATH + txt) as f:
+    with open(TEXT_PATH + txt) as f:
         for line in f.read().splitlines():
             line += "\n"
             if line.startswith("\n"):
@@ -65,12 +65,19 @@ def set_name():
   
 
 def set_role():
+    dialog('intro_roles.txt')
     role = curses.wrapper(main)
     
     if role == 10:
         sys.exit(1)
   
     return ROLES[role]
+
+
+def intro_end(username, role):
+    print(f"So, your name is... {username}.\nAnd your race is... {role}.\n")
+    input("CONTINUE...")
+    dialog('intro_0.txt')
 
 
 def print_menu(stdscr, selected_row_idx):

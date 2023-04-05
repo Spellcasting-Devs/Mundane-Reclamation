@@ -5,55 +5,51 @@ from configparser import ConfigParser
 from os.path import dirname, abspath
 
 
-PATH_PLAYERS = f"{dirname(abspath(__file__))}/../config/players/"
-PATH_ROLES = f"{dirname(abspath(__file__))}/../config/roles/"
+PLAYER_PATH = f"{dirname(abspath(__file__))}/../config/players/"
+CONFIG_PATH = f"{dirname(abspath(__file__))}/../config/"
 
 
 
 def create_player(name, role):
     if os.name == 'posix':
-        os.system(f"cd {PATH_PLAYERS} && touch {name}.ini")
+        os.system(f"cd {PLAYER_PATH} && touch {name}.ini")
     else:
-        os.system(f"cd {PATH_PLAYERS} && type NUL > {name}.ini")
+        os.system(f"cd {PLAYER_PATH} && type NUL > {name}.ini")
         
     role_stats = get_role_stats(role)
     
-    cfg = ConfigParser()
+    config = ConfigParser()
     
-    cfg['CHARACTER'] = {
+    config['CHARACTER'] = {
         'player_name': name,
         'player_role': role,
     }
     
-    cfg['BASE_STATS'] = {
+    config['BASE_STATS'] = {
         'health': role_stats[0],
         'mana': role_stats[1],
         'strength': role_stats[2],
         'barter': role_stats[3],
     }
     
-    cfg['INTRO'] = {
-        'c1': False,
-    }
-    
-    cfg['CHAPTER1'] = {
+    config['LEVEL1'] = {
         'c1': False,
         'c2': False,
         'c3': False,
     }
 
-    with open(f"{PATH_PLAYERS}{name}.ini", 'w') as cfg_player:
-        cfg.write(cfg_player)
-        cfg_player.flush()
+    with open(f"{PLAYER_PATH}{name}.ini", 'w') as player_config:
+        config.write(player_config)
+        player_config.flush()
       
       
 def get_role_stats(role):
     config = ConfigParser()
-    config.read(PATH_ROLES + "roles.ini")
+    config.read(CONFIG_PATH + "roles.ini")
 
     roles = config.items(role.upper())        
     role_stats = []
-    for r, s in roles:
+    for _, s in roles:
         role_stats.append(s)
         
     return role_stats
@@ -61,15 +57,14 @@ def get_role_stats(role):
 
 def load_player() -> str:
     global player_files
-    player_files = os.listdir(PATH_PLAYERS)
+    player_files = os.listdir(PLAYER_PATH)
     
     if len(player_files) > 0:
-        player_name_selection = curses.wrapper(main)
-        player_name_selection += 1
-        
-        if player_name_selection in range(1, len(player_files)+1):
-            return player_files[player_name_selection-1]
+        player_file_index = curses.wrapper(main)
+        player_file_index += 1
 
+        return player_files[player_file_index-1]
+    
     return "0"
 
 

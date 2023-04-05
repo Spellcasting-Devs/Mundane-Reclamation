@@ -1,0 +1,20 @@
+So, your name is... [player name].
+And your race is... [player race].
+
+Welcome to Mundus, hero. The world created by the ancient divines long, long ago.
+The world with two moons. Thriving with life despite the chaos that happened long ago.
+Life still goes on, albeit scarred. Beaten, but not giving up that easily.
+
+Like many others, you are just a farmer living a calm, rural life in the idyllic landscape.
+Race does not matter, for all they care about contribution to the community only.
+You enjoy planting crops and harvesting them. Life is simple, no rush, no violence.
+
+You sometimes miss the older times, when everything was beautiful, when you had a family.
+Today is the festival, to celebrate successful harvest of this year.
+You go to have a nice little toast with your fellows in the village until suddenly...
+
+Your village is raided by a group of barbarians! Some flee while others are getting slaughtered.
+You grab your recently sharpened scythe and make your stand against the treacherous invaders.
+You have barely any combat experience, but you will do as much as you can.
+
+Thus, it is time to be baptised by fire and embark on a great journey!

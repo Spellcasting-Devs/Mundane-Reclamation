@@ -2,20 +2,21 @@ import configparser
 import before.menu as menu
 import before.player as player
 import levels.intro as intro
+import levels.level0 as level0
 from os.path import abspath, dirname
 
 
-CHAPTERS = ['INTRO', 'CHAPTER1']
-PATH_PLAYERS = f"{dirname(abspath(__file__))}/config/players/"
+CHAPTERS = ['LEVEL1']
+PLAYER_PATH = f"{dirname(abspath(__file__))}/config/players/"
 config = configparser.ConfigParser()
 
 
 
 class Player:
     def __init__(self, file):
-        config.read(PATH_PLAYERS + file)
+        config.read(PLAYER_PATH + file)
         
-        self.config_file = PATH_PLAYERS + file
+        self.config_file = PLAYER_PATH + file
         self.name = config.get('CHARACTER', 'player_name')
         self.role = config.get('CHARACTER', 'player_role')
         self.health = config.get('BASE_STATS', 'health')
@@ -29,9 +30,9 @@ class Player:
 
 class Game:
     def __init__(self, file):
-        config.read(PATH_PLAYERS + file)
+        config.read(PLAYER_PATH + file)
         
-        self.config_file = PATH_PLAYERS + file
+        self.config_file = PLAYER_PATH + file
         self.data = {}
         self.checkpoint_file_location = ""
                 
@@ -55,10 +56,11 @@ class Game:
             config.write(configfile)
          
     
-def player_data_injector(o):
-    if o == 0: # new game
+def game_loader(operation):
+    if operation == 0: # new game
         username = intro.dialog('intro.txt', True)
         role = intro.set_role()
+        intro.intro_end(username, role)
         player.create_player(username, role)
         player_file = username + '.ini'
     else: # load game
@@ -66,10 +68,16 @@ def player_data_injector(o):
             
     return player_file
    
+   
+def game_loop():
+    pass
+
+    # start game loop here 
+   
     
 def main():
     operation = menu.load_menu() # loading the menu and wait for player operation
-    player_file = player_data_injector(operation) # create / load player config file based on operation -> initiates player and game class objects and loads player data
+    player_file = game_loader(operation) # create / load player config file based on operation -> initiates player and game class objects and loads player data
     
     if player_file == "0":
         main()
@@ -80,15 +88,8 @@ def main():
     global game
     game = Game(player_file) # creating game object with game state data from config
     
-    chapter, checkpoint = game.get_checkpoint_current() # chapter and section represent the revelvant checkpoint for the player
-    print(chapter, checkpoint)
-    player.get_stats()
+    game_loop()
 
-    # TODO: Put the player at his current checkpoint
-    # I though about creating a file structure like levels/chapter1/c1 representing the current chapter and checkpoint
-    # We could store any relevant ressources for each chapter in a dedicated location 
-    # This would provide a structure and enables us to pull the content that is needed from the directories
-    # To makes this work, all files would have to follow a strict naming convention
   
     
 if __name__ == '__main__':
