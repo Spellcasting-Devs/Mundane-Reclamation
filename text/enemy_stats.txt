@@ -1,0 +1,16 @@
+Level 0:
+
+Barbarian
+- health = 25
+- damage = 10
+Armoured Barbarian
+- health = 35
+- damage = 10
+Barbarian Horseback
+- health = 50
+- damage = 15
+Boss Barbarian
+- health = 75
+- damage = 20
+
+Level 1:
