@@ -1,0 +1,9 @@
+This is a list of comments on player's death that can be randomly picked.
+
+-You died of death.
+-You have been mercilessly slain...
+-Have you tried attacking and healing?
+-Don't worry, the gods will restart the battle for you.
+-You were strong, but your opponent was stronger...
+-I dunno, try punching your opponent.
+-Hey, at least you get to try again! Do it better this time! 
