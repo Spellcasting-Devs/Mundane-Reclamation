@@ -1,2 +1,15 @@
-TBD
-The morning rises.
+The sun rises.
+You have rested well, despite the recent raid.
+
+You do your improvised morning routines.
+Wash yourself. Eat whatever you have and see. Check the sword ol' gramps gave to you.
+Take a look around, stretch. Think about which way to go.
+
+As you get ready... you hear the walking noises. You get startled, take sword and investigate.
+
+But it's not what it seems. You encounter a friendly, wandering halfling trader.
+
+"Hi! I see you're in a heightened state of sense... would you want to get this cheer-up potion for 5 pogs?"
+You think about it, and check your pockets. Indeed, you have exactly 5 pogs to trade for the cheer-up potion.
+
+So begins the trade phase...

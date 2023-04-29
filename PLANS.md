@@ -21,7 +21,7 @@ Now you can either create a new player or select an existing player and load its
 
 Save game: JSON?
 
-Levels: 
+Levels:
 
 Level 0: Baptism By Fire (tutorial level)
 Level 1: Over The Hills
@@ -29,3 +29,16 @@ Level 2: Degenerates, Degenerates Everywhere
 Level 3: The Hunt For Red Witch
 Level 4: Blackburn's Revenge
 Level 5: The Final Struggle
+
+Reuse of some of enemies are allowed, but has to be consistent transition
+
+To-do:
+
+- [ ] Drawing of how the combat should look like
+- [ ] Drawing of how the simple shop should look like
+
+Level 1:
+    - [ ] Enemies
+    - [ ] Friendly Wanderer + dialogue + implementation of buying stuff
+    - [ ] Zooming in the ruins of a city
+    - [ ] Map
